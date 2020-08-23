@@ -10,7 +10,7 @@ public class SnakeLadder
 	    int RandonNo1To6 = random.nextInt(6)+1;
 	    return RandonNo1To6;
    }
-   public static void repeatTillReach100()
+   public static void repeatTillPlayerReachExact100()
 	{ 
         Random random = new Random();
 		int Win=0;
@@ -55,7 +55,9 @@ public class SnakeLadder
    {
 	   System.out.println("	welcome to the Snake & Ladder Game");
 	   fromPositionZero();
-	   System.out.println(getRandomNum());
-	   repeatTillReach100()
+	   //System.out.println(getRandomNum());
+	   //repeatTillReach100()
+	   repeatTillPlayerReachExact100();
+	   
    }
 }
