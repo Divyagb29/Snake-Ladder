@@ -10,57 +10,64 @@ public class SnakeLadder
 	    int RandonNo1To6 = random.nextInt(6)+1;
 	    return RandonNo1To6;
    }
-   public static void getNumberofTimesDicePlayed()
+  public static int getNoOfTimesDicePlayed_Position()
 	{ 
-        Random random = new Random();
-		int Win=0;
+
+		Random random = new Random();
 		int noOfTimesDicePlayed=0;
+		int Win = 0;
 		while(Win < 100)
 		{
-			int RandonNo1To6=getRandomNum();
-			int RandomCheck=random.nextInt(3);
-			if(RandomCheck == 2 && Win > RandonNo1To6)
+			int randonNo1To6 = getRandomNum();
+			int randomCheck = random.nextInt(3);
+			//if player position will go below 0 then player will start from 0
+
+			//when step on snake
+			if(randomCheck == 2 && Win > randonNo1To6)
 			{
 
-				System.out.println("oops you step on snake you will go "+RandonNo1To6+" step back");
-				Win=Win-RandonNo1To6;
-				System.out.println("you are in "+Win);
+				System.out.println("OOPS.. you step on snake you will go "+randonNo1To6+" step back");
+				Win = Win-randonNo1To6;
+				System.out.println("You are in position "+Win);
+				System.out.println();
+				noOfTimesDicePlayed++;
+			}
+			// no move 
+			else if(randomCheck == 0)
+			{
+				System.out.println("You made a FOUL you scored 0 so you will be in same position");
+				System.out.println("You are in position "+Win);
 				System.out.println();
 				noOfTimesDicePlayed++;
 
 			}
-			else if(RandomCheck == 0)
-			{
-				System.out.println("you made a foult you scored 0 so you will be in same position");
-				System.out.println("you are in position "+Win);
-				System.out.println();
-				noOfTimesDicePlayed++;
 
-			}
 			else 
 			{
-				Win=Win+RandonNo1To6;
+				Win = Win+randonNo1To6;
+				//if win exceed 100
 				if(Win > 100)
 				{
-					Win=Win-RandonNo1To6;
+					Win = Win-randonNo1To6;
 					noOfTimesDicePlayed++;
 				}
-				else 
-				{
-					System.out.println("congrats you have incremented by "+RandonNo1To6);
-					System.out.println("you are in position "+Win);
-				    System.out.println();
+				else {
+					System.out.println("You have scored "+randonNo1To6);
+					System.out.println("CONGRATS... you have incremented by "+randonNo1To6);
+					System.out.println("You are in position "+Win);
+					System.out.println();
 					noOfTimesDicePlayed++;
 				}
 			}
 			if(Win == 100)
 			{
-				System.out.println("congrats you have reached till 100");
+				System.out.println("CONGRATS YOU HAVE WON THE GAME");
+				System.out.println();
 
 			}
-
-        }
+		}
 		return noOfTimesDicePlayed;
+
 	}
    public static void main(String ag[])
    {
@@ -68,7 +75,9 @@ public class SnakeLadder
 	   fromPositionZero();
 	   //System.out.println(getRandomNum());
 	   //repeatTillReach100()
-	   System.out.println("Total times dice played by you is "+getNumberofTimesDicePlayed());
-	   
+	   System.out.println("....................");
+	   	System.out.println("Total times dice played by you is "+getNoOfTimesDicePlayed_Position());
+		System.out.println();
+		System.out.println("Thankyou for playing game...");
    }
 }
